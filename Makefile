@@ -6,3 +6,6 @@ me:
 
 update:
 	git pull
+
+upload:
+	git push
