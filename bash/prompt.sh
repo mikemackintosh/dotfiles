@@ -12,11 +12,11 @@ function mark() {
   message=""
   width=$(($(tput cols)-1))
   if [[ ! -z $@ ]]; then
-    message=" --> $@"
+    message=" MARKED: $@"
     width=$(($width-${#message}))
   fi
 
-  echo -ne "\033[1;30;44m ${message}"
+  echo -ne "\033[1;0;44m ${message}"
   repeat " " $width
   echo -ne "\033[0m"
 }
@@ -105,6 +105,7 @@ function root_prompt_left() {
 
 # Generate the prompt
 function prompt() {
+    history -a; history -n;
     local EXIT="$?"
     PROMPT_CHAR='$'
 
@@ -113,7 +114,6 @@ function prompt() {
     if [ $EXIT != 0 ]; then
       STATUS="\[$SPLG_PINK\]▸ \[$CLEAR\]"
     fi
-
     export PATH
 
     # E
@@ -134,8 +134,17 @@ function prompt() {
 }
 
 SYSTEM=$(uname)
-PROMPT_COMMAND=prompt
-export PROMPT_COMMAND
+
+# Avoid duplicates
+export HISTCONTROL=ignoredups:erasedups
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=100000               # big big history
+
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+
+export PROMPT_COMMAND="prompt; history -a; history -c; history -r"
+
 export -f prompt
 export -f prompt_left
 export -f prompt_right
