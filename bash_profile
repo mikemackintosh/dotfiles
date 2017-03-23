@@ -28,7 +28,7 @@ export EDITOR=vim
 for f in $HOME/.dotfiles/bash/*.sh; do source $f; done
 
 # Load all the source files
-for f in $HOME/.private/*; do
+for f in $HOME/.private/*.sh; do
   if [[ -f $f ]]; then
     source $f;
   fi
