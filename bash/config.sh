@@ -26,5 +26,5 @@ function private {
 
 # Update update-dotfiles
 function update-dotfiles {
-  (cd ~/.dotfiles && git stash && git pull && reload)
+  (cd ${HOME}/.dotfiles && git stash && git pull && reload)
 }

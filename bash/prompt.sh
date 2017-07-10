@@ -105,7 +105,6 @@ function root_prompt_left() {
 
 # Generate the prompt
 function prompt() {
-    history -a; history -n;
     local EXIT="$?"
     PROMPT_CHAR='$'
 
@@ -136,15 +135,16 @@ function prompt() {
 SYSTEM=$(uname)
 
 # Avoid duplicates
-export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=100000                   # big big history
-export HISTFILESIZE=100000               # big big history
+export HISTCONTROL=ignoredups:ignorespace:erasedups
+export HISTSIZE=9000
+export HISTFILESIZE=$HISTSIZE
+export HISTTIMEFORMAT='%Y-%m-%d %H:%M.%S | '
+export HISTIGNORE="ls:exit:history:[bf]g:jobs"
 
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
 
-export PROMPT_COMMAND="prompt; history -a; history -c; history -r"
-
+export PROMPT_COMMAND="prompt; history -a;"
 export -f prompt
 export -f prompt_left
 export -f prompt_right

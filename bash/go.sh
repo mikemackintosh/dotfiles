@@ -1,3 +1,8 @@
+# Add in GOBIN and PATH if it exists
+if [[ -d "/usr/local/opt/go/libexec/bin" ]]; then
+  export PATH="/usr/local/opt/go/libexec/bin:$PATH:${GOPATH}/bin"
+fi
+
 # MOST AWESOMEST THING EVER
 function goto() {
   echo -n "Switching to ${1}..."
