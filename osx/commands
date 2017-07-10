@@ -1,0 +1,2 @@
+for uma in $(ls -1 /Users/*/Library/Preferences/MobileMeAccounts.plist); do /usr/libexec/PlistBuddy -c "print :Accounts:0:Services:0:status" $uma; done
+/usr/sbin/nvram -x -p
