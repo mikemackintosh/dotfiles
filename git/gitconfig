@@ -84,6 +84,7 @@
     insteadOf = ghub:
     insteadOf = github:
     insteadOf = http://github.com/
+    insteadOf = https://github.com/
 
-[url "https://github.com/"]
-		insteadOf = http://github.com/
+[credential]
+	helper = osxkeychain
