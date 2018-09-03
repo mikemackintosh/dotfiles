@@ -1,5 +1,5 @@
 [include]
-		path = .private/git/config
+		path = .private/gitconfig
 
 [branch]
 		autosetuprebase = always
@@ -88,3 +88,6 @@
 
 [credential]
 	helper = osxkeychain
+
+[url "https://github.com/"]
+		insteadOf = http://github.com/
