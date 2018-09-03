@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Set the hide character
 HIDE_CHARACTER="█"
 
 # Repeat function
@@ -70,7 +71,7 @@ function prompt_left() {
     CDIR=$(echo ${EDIR}/)
   fi
 
-  echo -e "\[$STATUS\]\[$COLOR\]\u\[$SPLG_LGREY\] \[$PRIMARY_COLOR\]$CDIR $(git_branch)"
+  echo -e "\[$UPDATES\]\[$STATUS\]\[$COLOR\]\u\[$SPLG_LGREY\] \[$PRIMARY_COLOR\]$CDIR $(git_branch)"
 }
 
 
@@ -100,13 +101,17 @@ function root_prompt_left() {
 
   PRIMARY_COLOR=${PRIMARY_COLOR-$SPLG_LBLUE}
 
-  echo -e "\[$STATUS\]\[$SPLG_PINK\]\u\[$SPLG_LGREY\] \[$PRIMARY_COLOR\]\w"
+  echo -e "\[$UPDATES\]\[$STATUS\]\[$SPLG_PINK\]\u\[$SPLG_LGREY\] \[$PRIMARY_COLOR\]\w"
 }
 
 # Generate the prompt
 function prompt() {
     local EXIT="$?"
     PROMPT_CHAR='$'
+
+    if [[ ! -z $SCRIPT_UPDATES ]]; then
+      UPDATES=$SCRIPT_UPDATES
+    fi
 
     compensate=72
     STATUS="\[$SPLG_GREEN\]▸ \[$CLEAR\]"
@@ -136,15 +141,17 @@ SYSTEM=$(uname)
 
 # Avoid duplicates
 export HISTCONTROL=ignoredups:ignorespace:erasedups
-export HISTSIZE=9000
-export HISTFILESIZE=$HISTSIZE
-export HISTTIMEFORMAT='%Y-%m-%d %H:%M.%S | '
 export HISTIGNORE="ls:exit:history:[bf]g:jobs"
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=$HISTSIZE               # big big history
+export HISTTIMEFORMAT="%d/%m/%y %T | "
 
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
 
-export PROMPT_COMMAND="prompt; history -a;"
+export PROMPT_COMMAND=prompt
+export PROMPT_COMMAND="history -a; history -n;${PROMPT_COMMAND}"
+
 export -f prompt
 export -f prompt_left
 export -f prompt_right
