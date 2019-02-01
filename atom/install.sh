@@ -3,11 +3,8 @@ source ../helpers.sh
 
 log "Preparing to install Atom packages via apm"
 ruby -e '%w{
-autocomplete-go
-builder-go
-environment
+city-lights-syntax
 figletify
-git-plus
 go-plus
 language-chef
 language-hcl
