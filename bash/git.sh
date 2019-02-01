@@ -51,3 +51,8 @@ function c {
   MESSAGE=$@
   git commit -m "$MESSAGE"
 }
+
+function git-cleanup {
+  git reflog expire --all --expire=now
+  git gc --prune=now --aggressive
+}
