@@ -6,22 +6,25 @@ set -o noclobber
 set -o ignoreeof
 # set -o allexport
 
+# Set default editor
+export EDITOR=vim
+
 # Set some wonderful path stuff
 unset PATH
 export GOPATH="${HOME}/go"
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+export PATH="/usr/local/google-cloud-sdk/bin:$PATH"
 
 # Check for personal bin
 if [[ -d "$HOME/bin" ]]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
-# Set default editor
-export EDITOR=vim
-
 # Load bash and private
-for f in $HOME/.dotfiles/bash/*.sh; do source $f; done
+for f in $HOME/.dotfiles/bash/*.sh; do
+  source $f;
+done
 
 # Load all the source files
 for f in $HOME/.private/*.sh; do
@@ -34,3 +37,4 @@ done
 if [[ -e ${HOME}/.iterm2_shell_integration.bash ]]; then
   source ${HOME}/.iterm2_shell_integration.bash
 fi
+
