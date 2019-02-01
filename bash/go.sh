@@ -59,6 +59,7 @@ function goskel(){
   echo "Creating $PROJECT skeleton"
   echo " --> Adding bin, libs and testing directories"
   mkdir -p $PROJECT/{bin,cmd,libs,testing}
+  touch $PROJECT/bin/.gitkeep
 
   # Add flatfiles
   echo " --> Adding license, todos and readme"
@@ -88,4 +89,19 @@ function goskel(){
   # Return status
   echo "Created project $PROJECT successfully."
 
+}
+
+function goget(){
+    if [[ -z $1 ]]; then
+        echo "Please provide a repo"
+        return
+    fi
+
+    # Make the git dir lowercase
+    DIR=$(echo $1 | awk '{ print tolower($1) }')
+
+    REPO=$GOPATH/src/`dirname $DIR`
+    mkdir -p $REPO
+    cd $REPO
+    git clone $DIR
 }
