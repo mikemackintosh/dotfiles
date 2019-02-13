@@ -2,9 +2,7 @@
 
 # Turn off clobber, use >| instead
 set -o noclobber
-# set -o hashall
 set -o ignoreeof
-# set -o allexport
 
 # Set default editor
 export EDITOR=vim
@@ -37,4 +35,3 @@ done
 if [[ -e ${HOME}/.iterm2_shell_integration.bash ]]; then
   source ${HOME}/.iterm2_shell_integration.bash
 fi
-

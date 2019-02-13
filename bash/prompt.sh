@@ -141,16 +141,15 @@ SYSTEM=$(uname)
 
 # Avoid duplicates
 export HISTCONTROL=ignoredups:ignorespace:erasedups
-export HISTIGNORE="ls:exit:history:[bf]g:jobs"
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=$HISTSIZE               # big big history
 export HISTTIMEFORMAT="%d/%m/%y %T | "
+export HISTIGNORE="ls:exit:history:[bf]g:jobs"
 
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
 
-export PROMPT_COMMAND=prompt
-export PROMPT_COMMAND="history -a; history -n;${PROMPT_COMMAND}"
+export PROMPT_COMMAND="prompt; history -a;"
 
 export -f prompt
 export -f prompt_left
