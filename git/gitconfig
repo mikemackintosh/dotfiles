@@ -1,5 +1,5 @@
 [include]
-		path = .private/gitconfig
+		path = .private/git/config
 
 [branch]
 		autosetuprebase = always
@@ -79,6 +79,9 @@
     show = diff-highlight | less
     diff = diff-highlight | less
 
+[url "ssh://git@mikemackintosh.github.com/mikemackintosh"]
+    insteadOf = https://github.com/mikemackintosh
+
 [url "ssh://git@github.com/"]
     insteadOf = gh:
     insteadOf = ghub:
@@ -91,3 +94,4 @@
 
 [url "https://github.com/"]
 		insteadOf = http://github.com/
+
