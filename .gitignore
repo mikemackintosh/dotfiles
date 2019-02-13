@@ -2,3 +2,4 @@
 !atom/config.cson
 atom/
 .netrwhist
+vim/.netrwhist
