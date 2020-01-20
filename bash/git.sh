@@ -2,8 +2,7 @@
 
 function git_branch {
     local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-
-    if [ -e $branch ]; then
+    if [ -z $branch ]; then
         return
     else
         if [ $branch == 'master' ]; then
@@ -11,10 +10,17 @@ function git_branch {
         elif [ $branch == 'HEAD' ]; then
             COLOR="${SPLG_ORANGE}"
         else
-            COLOR="${SPLG_PINK}"
+            COLOR="non-master ${SPLG_LORANGE}"
         fi
-        echo -e "${SPLG_LGREY}\302\261${COLOR} ${branch}"
+        echo -e "${COLOR}${branch}"
     fi
+}
+
+function git_branch_prompt {
+  local branch=$(git_branch)
+  if [[ ! -z "${branch}" ]]; then
+    echo -e "${SPLG_LGREY} on ${branch}"
+  fi
 }
 
 # Rewrites the author in the history

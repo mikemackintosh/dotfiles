@@ -40,10 +40,11 @@ function prompt_right() {
 
 # Sets the prompt left
 function prompt_left() {
-  PRIMARY_COLOR=${PRIMARY_COLOR-$SPLG_GREEN}
+  PRIMARY_COLOR=${PRIMARY_COLOR-$SPLG_LBLUE}
+  SECONDARY_COLOR=${SECONDARY_COLOR-$SPLG_PURPLE}
   #CPATH="$SPLG_DGREY$(dirname $PWD)/$SPLG_ORANGE$(basename $PWD)"
   #echo -e "$SPLG_LBLUE\u$SPLG_LGREY@$SPLG_DBLUE\h $SPLG_PINK[$CPATH$SPLG_PINK]"
-  COLOR=$SPLG_LBLUE
+  COLOR=$SECONDARY_COLOR
   if [[ ! -z $SSH_CLIENT ]]; then
     PRIMARY_COLOR=${SPLG_LBLUE}
     COLOR=$SPLG_GREEN
@@ -71,7 +72,7 @@ function prompt_left() {
     CDIR=$(echo ${EDIR}/)
   fi
 
-  echo -e "\[$UPDATES\]\[$STATUS\]\[$COLOR\]\u\[$SPLG_LGREY\] \[$PRIMARY_COLOR\]$CDIR $(git_branch)"
+  echo -e "\[$UPDATES\]\[$STATUS\]\[$COLOR\]\u\[$SPLG_LGREY\] \[$PRIMARY_COLOR\]$CDIR$(git_branch_prompt)"
 }
 
 
