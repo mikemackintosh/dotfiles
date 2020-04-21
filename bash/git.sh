@@ -1,5 +1,17 @@
 #!/bin/bash
 
+function gpu() {
+  local REMOTE_BRANCH=$1
+  local LOCAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+  if [ ! -e $branch ]; then
+      echo "no remote branch provided"
+      return
+  fi
+
+  git push -u origin HEAD:${REMOTE_BRANCH}
+}
+
 function git_branch {
     local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
     if [ -z $branch ]; then
