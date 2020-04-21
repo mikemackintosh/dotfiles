@@ -75,4 +75,9 @@ export LIGHT_GREY=$SPLG_PURPLE
 export SPLG_CLEAR="\033[0m" #$(tput sgr0)
 export CLEAR=$SPLG_CLEAR
 
+# Dunkin Donuts
+export DD_ORANGE="\033[38;5;202m"
+export DD_PINK="\033[38;5;205m"
+export DD_LPINK="\033[38;5;207m"
+
 # color(1) completion

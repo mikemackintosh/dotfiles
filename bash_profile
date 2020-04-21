@@ -9,10 +9,21 @@ export EDITOR=vim
 
 # Set some wonderful path stuff
 unset PATH
-export GOPATH="${HOME}/go"
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export PATH="/usr/local/google-cloud-sdk/bin:$PATH"
+
+# Go path
+export GOPATH="${HOME}/go"
+
+# Set history to avoid duplicates
+export HISTCONTROL=ignoredups:ignorespace:erasedups
+export HISTFILESIZE=1000000
+export HISTTIMEFORMAT="%d/%m/%y %T | "
+export HISTIGNORE="ls:exit:history:[bf]g:jobs"
+
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
 
 # Check for personal bin
 if [[ -d "$HOME/bin" ]]; then
@@ -36,4 +47,3 @@ if [[ -e ${HOME}/.iterm2_shell_integration.bash ]]; then
   source ${HOME}/.iterm2_shell_integration.bash
 fi
 
-source '/Users/splug/.flowridarc'
