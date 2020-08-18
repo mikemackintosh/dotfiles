@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Turn off clobber, use >| instead
+# Turn off clobber, use >| instead. This prevents accidental overwrites.
 set -o noclobber
 set -o ignoreeof
 
@@ -21,7 +21,6 @@ export HISTCONTROL=ignoredups:ignorespace:erasedups
 export HISTFILESIZE=1000000
 export HISTTIMEFORMAT="%d/%m/%y %T | "
 export HISTIGNORE="ls:exit:history:[bf]g:jobs"
-
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
 
@@ -37,6 +36,13 @@ done
 
 # Load all the source files
 for f in $HOME/.private/*.sh; do
+  if [[ -f $f ]]; then
+    source $f;
+  fi
+done
+
+# Look for other included files
+for f in $HOME/.include.sh/*.sh; do
   if [[ -f $f ]]; then
     source $f;
   fi

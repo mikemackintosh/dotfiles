@@ -138,7 +138,7 @@ function prompt() {
 
     # Export PS1 and prompts
     # export PS1=$(printf "%*s\r%s\n\[$SPLG_GREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
-    export PS1=$(printf "\n%s\n%s \[$DD_PINK\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(prompt_left)" "$(prompt_right)")
+    export PS1=$(printf "\n%s\n%s \[$SPLG_LBLUE\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]$PROMPT_CHAR\[$CLEAR\] " "$(prompt_left)" "$(prompt_right)")
     export SUDO_PS1=$(printf "%*s\r%s\n\[$SPLG_DGREY\]$HOST\[$CLEAR\] \[$SPLG_PURPLE\]#\[$CLEAR\] " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(root_prompt_left)")
 }
 

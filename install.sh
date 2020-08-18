@@ -32,6 +32,12 @@ if [[ $BASH -eq 1 ]]; then
     touch $HOME/.private/nil
   fi
 
+  # Create includes dir
+  if [ ! -d "${HOME}/.include.sh/" ]; then
+    mkdir $HOME/.include.sh
+    touch $HOME/.include.sh/nil
+  fi
+
   # Place bash_profile
   place bash_profile
 
@@ -44,6 +50,7 @@ if [[ $BASH -eq 1 ]]; then
 
   # Place git
   place git/gitconfig gitconfig
+  place git/gitconfig-osx gitconfig-osx
   place git/gitignore gitignore
 
   # Place tmux.conf

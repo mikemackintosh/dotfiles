@@ -89,8 +89,8 @@
     insteadOf = http://github.com/
     insteadOf = https://github.com/
 
-[credential]
-	helper = osxkeychain
+[IncludeIf "gitdir:/Users"]
+	path = ~/.gitconfig-osx
 
 [url "https://github.com/"]
 		insteadOf = http://github.com/
