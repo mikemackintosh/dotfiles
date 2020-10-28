@@ -75,7 +75,7 @@ function prompt_left() {
     CDIR=$(echo ${EDIR}/)
   fi
 
-  echo -e "\[$UPDATES\]\[$STATUS\]\[$COLOR\]\u\[$SPLG_LGREY\] \[$PRIMARY_COLOR\]$CDIR$(git_branch_prompt)"
+  echo -e "\[$UPDATES\]\[$STATUS\]\[$COLOR\]${USERNAME:-\u}\[$SPLG_LGREY\] \[$PRIMARY_COLOR\]$CDIR$(git_branch_prompt)"
 }
 
 
