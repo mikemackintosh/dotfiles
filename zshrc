@@ -1,53 +1,19 @@
-# Set defaults
-export EDITOR=atom
-export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-export CLICOLOR=1
-alias ll="ls -alG"
-
 # Set default lang
 export LANGUAGE="en_US.UTF-8"
 export LC_ALL=en_US.UTF-8
 
-# Check for personal bin
-if [[ -d "$HOME/bin" ]]; then
-  export PATH="$HOME/bin:$PATH"
-fi
-
-
-# Load any darwin related code
-sources=("$HOME/.dotfiles/zshfn/*")
-if [[ $OSTYPE == darwin* ]]; then
-    export CLICOLOR=1
-    sources+=("$HOME/.dotfiles/zshfn/darwin/*")
-# Load linux related configs
-elif [[ $OSTYPE == linux* ]]; then
-    alias ls='ls --color=auto'
-    sources+=("$HOME/.dotfiles/zshfn/linux/*")
-fi
-
-# Source all the (readable) things (files)!
-for file in "${sources[@]}"; do
-  echo $file;
-    [ -f "$file" ] && [ -r "$file" ] && source "$file";
-done;
-unset file;
-
-
-# History
-export HISTSIZE=50000
-export SAVEHIST=10000
-setopt extended_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt inc_append_history
-setopt share_history
+# Autoload plugins
+autoload -Uz compinit && compinit
+autoload -Uz colors && colors
+autoload -Uz promptinit && promptinit
+autoload -Uz bashcompinit && bashcompinit
 
 # General options
 setopt globdots
 setopt mark_dirs
 setopt list_packed
-
+setopt extended_glob
+setopt nullglob
 
 # Changing directories
 setopt auto_cd
@@ -64,6 +30,36 @@ setopt always_to_end
 setopt complete_in_word
 setopt flow_control
 setopt menu_complete
+
+# Load any darwin related code
+sources=("${HOME}/.dotfiles/zshfn/*")
+if [[ $OSTYPE == darwin* ]]; then
+    export CLICOLOR=1
+    sources+=("${HOME}/.dotfiles/zshfn/darwin/*")
+# Load linux related configs
+elif [[ $OSTYPE == linux* ]]; then
+    alias ls='ls --color=auto'
+    sources+=("${HOME}/.dotfiles/zshfn/linux/*")
+fi
+
+# Source all the (readable) things (files)!
+for dir in "${sources[@]}"; do
+  while read -r file; do
+      [ -f "$file" ] && source $file;
+  done < <(compgen -G "$dir" || true)
+  unset file;
+done;
+unset dir;
+
+# History
+export HISTSIZE=50000
+export SAVEHIST=10000
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt inc_append_history
+setopt share_history
 
 # Completion
 zstyle ':completion:*:*:*:*:*' menu select
