@@ -58,5 +58,4 @@ function place() {
   fi
 
   echo ""
-
 }

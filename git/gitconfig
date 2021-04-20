@@ -1,97 +1,88 @@
-[include]
-		path = .private/gitconfig
+[init]
+  defaultBranch = main
 
 [branch]
-		autosetuprebase = always
+  autosetuprebase = always
 
 [pull]
-		rebase = true
+  rebase = true
 
 [format]
-		signoff = true
+  signoff = true
 
 [grep]
-		linenumber = true
+  linenumber = true
 
 [push]
-		default = simple
+  default = simple
 
 [color]
-		ui = auto
+  ui = true
 
 [color "branch"]
-		current = yellow reverse
-		local = yellow
-		remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 
 [color "diff"]
-		meta = blue bold
-		frag = magenta bold # line info
-		old = red # deletions
-		new = green # additions
+  commit = green
+  meta = yellow
+  frag = cyan
+  old = red
+  new = green
+  whitespace = red reverse
 
 [color "status"]
-		added = yellow
-		changed = green
-		untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
 
 [merge]
-		ff = false
-		tool = vimdiff
-		log = true
+  ff = false
+  tool = vimdiff
+  log = true
 
 [help]
-		autocorrect = 1
+  autocorrect = 1
 
 [alias]
-    d = diff --patience
-    br = branch
-    ci = commit -a
-    co = checkout
-    st = status
+  d = diff --patience
+  br = branch
+  ci = commit -a
+  co = checkout
+  st = status
 
-    up = pull
-    upstream = remote add upstream
-    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-    lgo = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  up = pull
+  upstream = remote add upstream
+  lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+  lgo = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
 [core]
-    # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = ~/.gitignore
-    attributesfile = ~/.gitattributes
+  excludesfile = ~/.gitignore
+  whitespace   = space-before-tab,-indent-with-non-tab,trailing-space
+  trustctime   = false
+  editor       = vim
+  pager        = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 
-  	# Treat spaces before tabs and all kinds of trailing whitespace as an error
-  	# [default] trailing-space: looks for spaces at the end of a line
-  	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-  	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-
-  	# Make `git rebase` safer on OS X
-  	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-  	trustctime = false
-
-    # Set editor to VIM
-    editor = vim
-    pager = lv -c
-
-[pager]
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
-
-[url "ssh://git@mikemackintosh.github.com/mikemackintosh"]
-    insteadOf = https://github.com/mikemackintosh
-
-[url "ssh://git@github.com/"]
-    insteadOf = gh:
-    insteadOf = ghub:
-    insteadOf = github:
-    insteadOf = http://github.com/
-    insteadOf = https://github.com/
+[include]
+  path = ~/.private/gitconfig
 
 [IncludeIf "gitdir:/Users"]
-	path = ~/.gitconfig-osx
-
-[url "https://github.com/"]
-		insteadOf = http://github.com/
-
+  path = ~/.gitconfig-osx
+[IncludeIf "gitdir:/home"]
+  path = ~/.gitconfig-linux
+[IncludeIf "gitdir:C:"]
+  path = ~/.gitconfig-windows
+[url "ssh://git@github.com/"]
+  insteadOf = gh:
+  insteadOf = ghub:
+  insteadOf = github:
+  insteadOf = http://github.com/
+  insteadOf = https://github.com/

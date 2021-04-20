@@ -1,7 +1,63 @@
-#!/bin/bash
+#!/bin/zsh
 
-# Inlcude the helper script
-source $HOME/.dotfiles/helpers.sh
+# Inlcude the helper script - Helper function for outputting information
+# A log will offset the start to match success and errors
+function log() {
+  echo -e "${@}"
+}
+
+# A generic log message
+function info() {
+  echo -e "\033[0m -> ${@}"
+}
+
+# A success will provide a green indicator at the beggining of the output
+function success() {
+  echo -e "\033[38;5;2m -> \033[0m${@}"
+}
+
+# Error will retun a red indication at the beggining of the output
+function error() {
+  echo -e "\033[38;5;1m -> \033[0m${@}"
+}
+
+# Used to backup files
+function bkp() {
+  info "Backing up ${1}"
+  mv ${1} ${1}.bak
+}
+
+# Place will backup existing files and link new ones
+function place() {
+  filename=$(basename ${1})
+  source_file=$HOME/.dotfiles/$1
+  log "Installing ${filename}"
+
+  # If we passed a destination file, use it
+  # this will by the link target
+  destination=$HOME/.${1}
+  if [[ ! -z $2 ]]; then
+    destination=$HOME/.${2}
+  fi
+
+  # log a message
+  success "Copying '${source_file}' to '${destination}'"
+
+  # Check for an existing file and backup if it exists
+  if [[ -e ${destination} ]]; then
+    bkp ${destination}
+  fi
+
+  # link the file correctly
+  ln -s $source_file $destination
+  if [[ $? -eq 0 ]]; then
+    success "Placed ${filename}"
+  else
+    fail "Error placing ${filename}"
+  fi
+
+  echo ""
+}
 
 # Install dotfiles
 if [ ! -d $HOME/.dotfiles ]; then
@@ -20,11 +76,11 @@ if [[ ! -z $1 ]]; then
 fi
 
 # Get readlink
-readlink $HOME/.bash_profile | grep .dotfiles/bash_profile > /dev/null
-BASH=$?
+readlink $HOME/.zshrc | grep .dotfiles/zshrc > /dev/null
+ZSH=$?
 
 # Install if the links are not in place already
-if [[ $BASH -eq 1 ]]; then
+if [[ $ZSH -eq 1 ]]; then
 
   # Create private dir
   if [ ! -d "${HOME}/.private/" ]; then
@@ -32,21 +88,14 @@ if [[ $BASH -eq 1 ]]; then
     touch $HOME/.private/nil
   fi
 
-  # Create includes dir
-  if [ ! -d "${HOME}/.include.sh/" ]; then
-    mkdir $HOME/.include.sh
-    touch $HOME/.include.sh/nil
-  fi
+  # Place bin
+  place bin
 
-  # Place bash_profile
-  place bash_profile
+  # Place zsh
+  place zshrc
 
   # Place curlrc
   place curlrc
-
-  # Place vim
-  place vim
-  place vim/vimrc vimrc
 
   # Place git
   place git/gitconfig gitconfig
@@ -55,15 +104,15 @@ if [[ $BASH -eq 1 ]]; then
 
   # Place tmux.conf
   place tmux.conf
+  place hushlogin
 
 else
   log "Already installed. Skipping."
 fi
 
 # Source the bash_profile we just installed
-source ~/.bash_profile
-
+source ~/.zshrc
 #OS=`uname`
 #if [[ $OS == 'Darwin' ]]; then
 #  install_osx
-#fi
+# fi
