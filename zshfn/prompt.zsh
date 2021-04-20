@@ -1,18 +1,15 @@
 # Set basic helper for resetting color
-local rc=$reset_color
-
-# RPROMPT="%F{194}%K{005}[%D{%y/%m/%f}|%@]%{$rc%}"
-# PROMPT="%F{240}%n%F{red}@%F{green}%m:%F{141}%d %{$rc%}%% "
-# PS1='%(?.%F{green}.%F{green})%n@%m:%~%# %f'
+export rc="%f"
 
 # purple username
 username() {
-   echo "%{$FG[012]%}%n%{$reset_color%}"
+   echo "%{%F{165}%}%n %fon %F{111}%B$HOST%b$rc"
 }
 
 # current directory, two levels deep
 directory() {
-   echo "%2~"
+  COUNT=$(($(tput cols) /5))
+  echo "%F{51}%${COUNT}<..<%~$rc"
 }
 
 # current time with milliseconds
@@ -20,11 +17,20 @@ current_time() {
    echo "%*"
 }
 
-# returns 👾 if there are errors, nothing otherwise
+# returns 🖕 if there are errors, nothing otherwise
 return_status() {
-   echo "%(?..👾)"
+   echo "%(?..🖕)"
 }
 
 # putting it all together
-export PROMPT="%B$(username) $(directory)%b "
-export RPROMPT="$(current_time)$(return_status)"
+function precmd {
+  export PROMPT="$(return_status) $(username) $(directory) %b%F{154}%(!.#.$) %f"
+  if [[ -n $(git_current_branch) ]]; then
+    GIT="%B%F{078}$(git_current_branch)%f%b |$(git_prompt_status)"
+  else
+    unset GIT
+  fi
+  export RPROMPT="${GIT} %f$(current_time)"
+}
+
+setopt promptsubst

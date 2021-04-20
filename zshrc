@@ -65,6 +65,7 @@ setopt share_history
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*:default' list-colors ${LS_COLORS}
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' list-suffixes 
 zstyle ':completion:*' expand prefix suffix 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
