@@ -24,12 +24,24 @@ return_status() {
 
 # putting it all together
 function precmd {
-  export PROMPT="$(return_status) $(username) $(directory) %b%F{154}%(!.#.$) %f"
+  SECRETS=""
+  if [[ -n $HAS_STUBHUB_TOKEN ]]; then
+      SECRETS="(%BSet:%b StubHub)"
+  fi
+
+  PROMPT="$(return_status) $(username) $(directory) %b%F{154}%(!.#.$) %f"
+  if [[ -n $SECRETS ]]; then
+    PROMPT=$'\n'"${PROMPT}"
+    PROMPT="${SECRETS}${PROMPT}"
+  fi
+  export PROMPT
+
   if [[ -n $(git_current_branch) ]]; then
     GIT="%B%F{078}$(git_current_branch)%f%b |$(git_prompt_status)"
   else
     unset GIT
   fi
+
   export RPROMPT="${GIT} %f$(current_time)"
 }
 
