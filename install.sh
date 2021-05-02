@@ -109,6 +109,7 @@ if [[ $ZSH -eq 1 ]]; then
   # Place tmux.conf
   place tmux.conf
   place hushlogin
+  place vimrc
 
 else
   log "Already installed. Skipping."
@@ -116,7 +117,17 @@ fi
 
 # Source the bash_profile we just installed
 source ~/.zshrc
-#OS=`uname`
-#if [[ $OS == 'Darwin' ]]; then
-#  install_osx
-# fi
+
+if [[ $OSTYPE == darwin* ]]; then
+  apm install atom-ide-ui
+  apm install city-lights-icons
+  apm install go-debug
+  apm install go-plus
+  apm install go-signature-statusbar
+  apm install hclfmt
+  apm install hey-pane
+  apm install ide-go
+  apm install language-docker
+  apm install language-hcl
+  apm install suburb-lights-syntax
+fi
