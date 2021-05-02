@@ -80,6 +80,11 @@
   path = ~/.gitconfig-linux
 [IncludeIf "gitdir:C:"]
   path = ~/.gitconfig-windows
+
+[url "https://github.com/zsh-users"]
+  insteadOf = http://github.com/zsh-users
+  insteadOf = ssh://git@github.com/zsh-users
+
 [url "ssh://git@github.com/"]
   insteadOf = gh:
   insteadOf = ghub:

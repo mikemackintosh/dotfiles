@@ -3,3 +3,4 @@
 atom/
 .netrwhist
 vim/.netrwhist
+.DS_Store

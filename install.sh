@@ -2,33 +2,33 @@
 
 # Inlcude the helper script - Helper function for outputting information
 # A log will offset the start to match success and errors
-function log() {
+log() {
   echo -e "${@}"
 }
 
 # A generic log message
-function info() {
+info() {
   echo -e "\033[0m -> ${@}"
 }
 
 # A success will provide a green indicator at the beggining of the output
-function success() {
+success() {
   echo -e "\033[38;5;2m -> \033[0m${@}"
 }
 
 # Error will retun a red indication at the beggining of the output
-function error() {
+error() {
   echo -e "\033[38;5;1m -> \033[0m${@}"
 }
 
 # Used to backup files
-function bkp() {
+bkp() {
   info "Backing up ${1}"
   mv ${1} ${1}.bak
 }
 
 # Place will backup existing files and link new ones
-function place() {
+place() {
   filename=$(basename ${1})
   source_file=$HOME/.dotfiles/$1
   log "Installing ${filename}"
@@ -58,6 +58,9 @@ function place() {
 
   echo ""
 }
+
+# Install git submodules
+git submodule update --init --recursive
 
 # Install dotfiles
 if [ ! -d $HOME/.dotfiles ]; then
@@ -93,6 +96,7 @@ if [[ $ZSH -eq 1 ]]; then
 
   # Place zsh
   place zshrc
+  place zsh
 
   # Place curlrc
   place curlrc
