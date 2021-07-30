@@ -1,0 +1,6 @@
+[submodule "zshfn/zsh-autocomplete"]
+	path = zshfn/zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete.git
+[submodule "zshfn/zsh-syntax-highlighting"]
+	path = zshfn/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
