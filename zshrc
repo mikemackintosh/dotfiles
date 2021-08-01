@@ -310,17 +310,28 @@ bindkey '\ew' kill-region
 # Load any darwin related code
 sources=("$HOME/.private/*.*sh")
 
-_git_time_precmd() {
+_git_branch_precmd() {
   export GIT_BRANCH="$(git_current_branch)"
 }
+precmd_functions+=(_git_branch_precmd)
+
+_preexec_chrono() {
+  export START_TIME=$(chrono -m)
+}
+preexec_functions+=(_preexec_chrono)
+
+_precmd_chrono() {
+  CHRONO_DURATION=$(chrono)
+  unset START_TIME
+}
+precmd_functions+=(_precmd_chrono)
 
 precmd() {
-  RPROMPT="%F{blue}$GIT_BRANCH%f"
+  RPROMPT="%B%F{215}${CHRONO_DURATION}%f%b | %F{blue}$GIT_BRANCH%f"
 }
-
-# Set default prompt`
-precmd_functions+=(_git_time_precmd)
 precmd_functions+=(precmd)
+
+
 PROMPT='%F{blue}%1~%f %B%F{green}%#%f%b '
 
 # Source all the (readable) things (files)!
