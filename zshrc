@@ -327,7 +327,10 @@ _precmd_chrono() {
 precmd_functions+=(_precmd_chrono)
 
 precmd() {
-  RPROMPT="%B%F{215}${CHRONO_DURATION}%f%b | %F{blue}$GIT_BRANCH%f"
+  RPROMPT="%B%F{215}${CHRONO_DURATION}%f%b"
+  if [[ -n "${GIT_BRANCH/[ ]*\n/}" ]]; then
+    RPROMPT="${RPROMPT} | %F{blue}${GIT_BRANCH}%f"
+  fi
 }
 precmd_functions+=(precmd)
 
@@ -344,14 +347,6 @@ done;
 unset dir;
 
 reload() {
-  # Install plugins if there are plugins that have not been installed
-  #if ! zplug check --verbose; then
-  #    printf "Install? [y/N]: "
-  #    if read -q; then
-  #        echo; zplug install
-  #    fi
-  #fi
-
   clear
   #source ~/.zshrc
   exec zsh -l
