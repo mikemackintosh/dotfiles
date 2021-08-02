@@ -228,7 +228,12 @@ autoload -Uz bashcompinit && bashcompinit
 zmodload zsh/langinfo
 
 # Aliases
-alias ls='ls -la'
+alias ll="ls -alG"
+alias tf="terraform"
+alias plan="terraform plan"
+alias g="gcloud"
+alias apply="terraform apply"
+
 alias grep='grep --color=auto '
 alias egrep='egrep --color=auto '
 export GREP_COLOR='34;1'
