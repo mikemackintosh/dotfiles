@@ -312,8 +312,10 @@ bindkey '^f' autosuggest-accept
 bindkey ' ' magic-space
 bindkey -s '\el' 'ls\n'
 bindkey '\ew' kill-region
+
 # Load any darwin related code
-sources=("$HOME/.private/*.*sh")
+sources=("$HOME/.dotfiles/zshfn/corpident/*.*sh")
+sources+=("$HOME/.private/*.*sh")
 
 _git_branch_precmd() {
   export GIT_BRANCH="$(git_current_branch)"
@@ -336,6 +338,8 @@ precmd() {
   if [[ -n "${GIT_BRANCH/[ ]*\n/}" ]]; then
     RPROMPT="${RPROMPT} | %F{blue}${GIT_BRANCH}%f"
   fi
+
+  PROMPT="$PROMPT"
 }
 precmd_functions+=(precmd)
 
@@ -358,12 +362,12 @@ function "../.."() { cd ../.. }
 function "../../.."() { cd ../../.. }
 function "../../../.."() { cd ../../../.. }
 
-PROMPT='%F{blue}%1~%f %B%F{green}%#%f%b '
+PROMPT="${CORPIDENT}%F{blue}%1~%f %B%F{green}%#%f%b "
 
 # Source all the (readable) things (files)!
 for dir in "${sources[@]}"; do
   while read -r file; do
-      [ -f "$file" ] && source $file;
+    [ -f "$file" ] && source $file;
   done < <(compgen -G "$dir" || true)
   unset file;
 done;
