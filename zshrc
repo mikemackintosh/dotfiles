@@ -4,6 +4,7 @@ export LC_ALL=en_US.UTF-8
 
 # Go path
 export GOPATH="${HOME}/go"
+export PATH="/opt/homebrew/bin:${PATH}"
 
 # Gray color for autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'

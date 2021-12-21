@@ -91,3 +91,6 @@
   insteadOf = github:
   insteadOf = http://github.com/
   insteadOf = https://github.com/
+[user]
+	name = Mike Mackintosh
+	email = m@zyp.io
