@@ -69,7 +69,6 @@
   whitespace   = space-before-tab,-indent-with-non-tab,trailing-space
   trustctime   = false
   editor       = vim
-  pager        = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
 
 [include]
   path = ~/.private/gitconfig

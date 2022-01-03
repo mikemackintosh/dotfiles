@@ -4,7 +4,8 @@ export LC_ALL=en_US.UTF-8
 
 # Go path
 export GOPATH="${HOME}/go"
-export PATH="/opt/homebrew/bin:${PATH}"
+export PATH="/usr/local/google-cloud-sdk/bin:/opt/homebrew/bin:${PATH}:${GOPATH}/bin"
+
 
 # Gray color for autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
@@ -363,6 +364,7 @@ function "../.."() { cd ../.. }
 function "../../.."() { cd ../../.. }
 function "../../../.."() { cd ../../../.. }
 
+export CORPIDENT=$CORPIDENT_DOORDASH
 PROMPT="${CORPIDENT}%F{blue}%1~%f %B%F{green}%#%f%b "
 
 # Source all the (readable) things (files)!
