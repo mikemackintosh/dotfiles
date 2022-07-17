@@ -4,3 +4,6 @@
 [submodule "zshfn/zsh-syntax-highlighting"]
 	path = zshfn/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "qmk/qmk"]
+	path = qmk/qmk
+	url = https://github.com/mikemackintosh/qmk_firmware
