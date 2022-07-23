@@ -18,6 +18,8 @@ enum alt_keycodes {
 
 enum custom_keycodes {          // Make sure have the awesome keycode ready
   ALT_TAB = TERMINAL + 1,
+  S_ESC,
+  S_CDS,
   ALT_TILDE,
 };
 
@@ -27,6 +29,6 @@ enum string_macro_keycodes {
   G_CLONE,               // git clone
   G_STATUS,              // git status
   Z_LS,                  // ls -la
-  Z_PIN, //pin
-  Z_EDB, // edb
+  E_PIN, //pin
+  E_EDB, // edb
 };
