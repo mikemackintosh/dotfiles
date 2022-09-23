@@ -30,23 +30,16 @@
   newNormal = green bold
   newHighlight = green bold 22
 
-[color "diff"]
-  commit = green
-  meta = yellow
-  frag = cyan
-  old = red
-  new = green
-  whitespace = red reverse
-
 [color "status"]
   added = yellow
   changed = green
   untracked = cyan
 
 [merge]
-  ff = false
-  tool = vimdiff
-  log = true
+  ff            = false
+  tool          = vimdiff
+  log           = true
+  conflictstyle = diff3
 
 [help]
   autocorrect = 1
@@ -64,12 +57,27 @@
   lgo = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
+[diff]
+  colorMoved = default
+
+[delta]
+    navigate     = true    # use n and N to move between diff sections
+    light        = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
+    line-numbers = true
+
 [core]
   excludesfile = ~/.gitignore
   whitespace   = space-before-tab,-indent-with-non-tab,trailing-space
   trustctime   = false
   editor       = vim
-  pager        = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+  pager        = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[add.interactive]
+  useBuiltin = false # required for git 2.37.0
 
 [include]
   path = ~/.private/gitconfig

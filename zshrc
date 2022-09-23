@@ -2,6 +2,8 @@
 export LANGUAGE="en_US.UTF-8"
 export LC_ALL=en_US.UTF-8
 
+[[ $(uname -p) == *arm* ]] && alias brew="arch -arm64 brew"
+
 # Go path
 export GOPATH="${HOME}/go"
 
@@ -263,6 +265,3 @@ goget(){
 }
 
 zplug load
-
-
-[[ $OSTYPE == *darwin* ]] && alias brew="arch -arm64 brew"

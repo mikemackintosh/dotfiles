@@ -131,3 +131,5 @@ if [[ $OSTYPE == darwin* ]]; then
   apm install language-hcl
   apm install suburb-lights-syntax
 fi
+
+# brew install git-delta
