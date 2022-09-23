@@ -119,14 +119,6 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-brew install zplug
-  source ~/.zsh/zplug/init.zsh
-fi
-
-# Source the bash_profile we just installed
-source ~/.zshrc
-
-if [[ $OSTYPE == darwin* ]]; then
   apm install atom-ide-ui
   apm install city-lights-icons
   apm install go-debug
@@ -139,7 +131,15 @@ if [[ $OSTYPE == darwin* ]]; then
   apm install language-hcl
   apm install suburb-lights-syntax
 
+  brew install zplug
+  source ~/.zsh/zplug/init.zsh
   brew install git-delta
   brew install the_silver_searcher
   brew install jq
+  brew install go
 fi
+
+go install github.com/mikemackintosh/chrono@latest
+
+# Source the bash_profile we just installed
+source ~/.zshrc

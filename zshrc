@@ -5,6 +5,8 @@ export LC_ALL=en_US.UTF-8
 # Go path
 export GOPATH="${HOME}/go"
 
+export ZPLUG_HOME=${HOME}/.zsh/zplug
+source $ZPLUG_HOME/init.zsh
 
 # Gray color for autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
@@ -218,12 +220,6 @@ _add_identities
 
 # Autoload plugins
 # autoload -Uz compinit && compinit
-autocomplete() {
-  source $HOME/.dotfiles/zshfn/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-}
-
-source $HOME/.dotfiles/zshfn/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 autoload -Uz colors && colors
 autoload -Uz promptinit && promptinit
 autoload -Uz bashcompinit && bashcompinit
