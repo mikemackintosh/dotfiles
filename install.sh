@@ -59,6 +59,9 @@ place() {
   echo ""
 }
 
+# Install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 # Install git submodules
 git submodule update --init --recursive
 
@@ -115,6 +118,11 @@ else
   log "Already installed. Skipping."
 fi
 
+if [[ $OSTYPE == darwin* ]]; then
+brew install zplug
+  source ~/.zsh/zplug/init.zsh
+fi
+
 # Source the bash_profile we just installed
 source ~/.zshrc
 
@@ -130,4 +138,8 @@ if [[ $OSTYPE == darwin* ]]; then
   apm install language-docker
   apm install language-hcl
   apm install suburb-lights-syntax
+
+  brew install git-delta
+  brew install the_silver_searcher
+  brew install jq
 fi

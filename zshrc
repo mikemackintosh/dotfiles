@@ -4,7 +4,6 @@ export LC_ALL=en_US.UTF-8
 
 # Go path
 export GOPATH="${HOME}/go"
-export PATH="/usr/local/google-cloud-sdk/bin:/opt/homebrew/bin:${PATH}:${GOPATH}/bin"
 
 
 # Gray color for autosuggestions
@@ -19,6 +18,8 @@ fi
 if [[ -d "${HOME}/.bin" ]]; then
   export PATH="${HOME}/.bin:$PATH"
 fi
+export PATH="${HOME}/.bin/google-cloud-sdk/bin:/opt/homebrew/bin:${PATH}:${GOPATH}/bin"
+
 
 function __git_prompt_git() {
   GIT_OPTIONAL_LOCKS=0 command git "$@"
@@ -290,12 +291,13 @@ setopt share_history
 #zplug "woefe/wbase.zsh"
 #zplug "woefe/git-prompt.zsh", use:"{git-prompt.zsh,examples/wprompt.zsh}"
 #zplug "sharkdp/fd", from:gh-r, as:command, rename-to:fd, use:"*x86_64-unknown-linux-gnu.tar.gz"
-#zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-completions"
 #zplug "zsh-users/zsh-autosuggestions"
 #zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:2
 #zplug "zsh-users/zsh-history-substring-search", defer:3
 
 #zplug "b4b4r07/httpstat", as:command, use:'(*).sh', rename-to:'$1'
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # Use the Emacs-like keybindings
 bindkey -e
@@ -504,7 +506,7 @@ goget(){
 # zplug load
 
 
-if [[ $OSTYPE == *darwin* ]]; then
+if [[ $(uname -p) == *arm* ]]; then
   export ARCHFLAGS="-arch arm64"
   alias brew="arch -arm64 brew"
 fi

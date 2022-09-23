@@ -7,3 +7,6 @@
 [submodule "qmk/qmk"]
 	path = qmk/qmk
 	url = https://github.com/mikemackintosh/qmk_firmware
+[submodule "zsh/zplug"]
+	path = zsh/zplug
+	url = https://github.com/zplug/zplug
