@@ -1,3 +1,4 @@
+#pragma once
 #include QMK_KEYBOARD_H
 
 #include <print.h>
@@ -30,5 +31,6 @@ enum string_macro_keycodes {
   G_STATUS,              // git status
   Z_LS,                  // ls -la
   E_PIN, //pin
-  E_EDB, // edb
+  E_EDB, // sp1
+  E_SP2, // sp2
 };

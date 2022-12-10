@@ -1,3 +1,5 @@
+#pragma once
+
 #include "keymap.h"
 
 #if __has_include("secrets.h")
@@ -8,6 +10,9 @@
   #define SECRET_PIN "ok"
 #endif
 #ifndef SECRET_PHARSE
+  #define SECRET_PHARSE "ok"
+#endif
+#ifndef SECRET_PHARSE2
   #define SECRET_PHARSE "ok"
 #endif
 
@@ -29,8 +34,8 @@ static const char * cmds[] = {
     "ls -la ",
     SECRET_PIN,
     SECRET_PHARSE,
+    SECRET_PHARSE2,
 };
-
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -43,8 +48,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [1] = LAYOUT_65_ansi_blocker(
     KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_MUTE, \
-    _______, RGB_SPD, RGB_VAI, RGB_SPI, RGB_HUI, RGB_SAI, _______, U_T_AUTO,U_T_AGCR,_______, KC_PSCR, KC_SLCK, KC_PAUS, _______, KC_END, \
-    KC_LSCR, RGB_RMOD,RGB_VAD, RGB_MOD, RGB_HUD, RGB_SAD, _______, _______, _______, Z_LS,    _______, _______,          _______, KC_BRIU, \
+    _______, RGB_SPD, RGB_VAI, RGB_SPI, RGB_HUI, RGB_SAI, _______, U_T_AUTO,U_T_AGCR,_______, KC_PSCR, KC_SCRL, KC_PAUS, _______, KC_END, \
+    KC_LSCR, RGB_RMOD,RGB_VAD, RGB_MOD, RGB_HUD, RGB_SAD, _______, _______, _______, Z_LS,    _______,   E_SP2,          _______, KC_BRIU, \
     _______, RGB_TOG, _______, _______, _______, MD_BOOT, NK_TOGG, DBG_TOG, _______, LAG_SWP,   E_PIN,   E_EDB,          KC_VOLU, KC_BRID, \
     _______, _______, _______,                            KC_MPLY,                            _______, _______, KC_MRWD, KC_VOLD, KC_MFFD  \
   ),
@@ -69,9 +74,9 @@ void matrix_init_user(void) {
 void matrix_scan_user(void) { // The very important timer.
 }
 
-#define MODS_SHIFT  (get_mods() & MOD_BIT(KC_LSHIFT) || get_mods() & MOD_BIT(KC_RSHIFT))
-#define MODS_CTRL  (get_mods() & MOD_BIT(KC_LCTL) || get_mods() & MOD_BIT(KC_RCTRL))
-#define MODS_ALT  (get_mods() & MOD_BIT(KC_LALT))
+#define MODS_SHIFT  (get_mods() & MOD_BIT(KC_LSFT) || get_mods() & MOD_BIT(KC_RSFT))
+#define MODS_CTRL  (get_mods() & MOD_BIT(KC_LCTL) || get_mods() & MOD_BIT(KC_RCTL))
+#define MODS_ALT  (get_mods() & MOD_BIT(KC_LALT) || get_mods() & MOD_BIT(KC_RALT))
 #define MODS_RALT  (get_mods() & MOD_BIT(KC_RALT))
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -100,10 +105,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if(MODS_SHIFT) {
               uint16_t _shift;
 
-              if (get_mods() & MOD_BIT(KC_LSHIFT)) {
-                _shift = KC_LSHIFT;
+              if (get_mods() & MOD_BIT(KC_LSFT)) {
+                _shift = KC_LSFT;
               } else {
-                _shift = KC_RSHIFT;
+                _shift = KC_RSFT;
               }
 
               unregister_code(_shift);
@@ -203,7 +208,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
           break;
 
-      case E_PIN ... E_EDB:
+      case E_PIN ... E_SP2:
           if (record->event.pressed) {
               send_string_with_delay(cmds[keycode - G_INIT], 1);
               register_code(KC_ENT);

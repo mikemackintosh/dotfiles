@@ -347,7 +347,7 @@ function cd () {
   local DOTENV="\033[1;38;5;220m[\033[0;38;5;214md\033[0;38;5;215mo\033[0;38;5;216mt\033[0;38;5;217me\033[0;38;5;218mn\033[0;38;5;219mv\033[1;38;5;220m]\033[0m"
   if [[ -f .env ]]; then
     echo "${DOTENV} Unscoping \033[38;5;243m.env\033[0m configuration"
-    unset $(cat .env | cut -d'=' -f1)
+    unset $(cat .env | grep -vE '#' | cut -d'=' -f1)
   fi
   builtin cd "$@"
   if [[ -f .env ]]; then

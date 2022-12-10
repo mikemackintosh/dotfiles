@@ -1,10 +1,27 @@
 RGB_MATRIX_EFFECT(outrun_sunset)
 RGB_MATRIX_EFFECT(game_fps)
-RGB_MATRIX_EFFECT(game_moba)
+
+#define RED {HSV_RED}
+#define CORAL {HSV_CORAL}
+#define ORANGE {HSV_ORANGE}
+#define GOLDEN {HSV_GOLDENROD}
+#define GOLD {HSV_GOLD}
+#define YELLOW {HSV_YELLOW}
+#define CHART {HSV_CHARTREUSE}
+#define GREEN {HSV_GREEN}
+#define SPRING {HSV_SPRINGGREEN}
+#define TURQ {HSV_TURQUOISE}
+#define TEAL {HSV_TEAL}
+#define CYAN {HSV_CYAN}
+#define AZURE {HSV_AZURE}
+#define BLUE {HSV_BLUE}
+#define PURPLE {HSV_PURPLE}
+#define MAGENT {HSV_MAGENTA}
+#define PINK {HSV_PINK}
 
 #ifdef RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 #ifndef LED_FLAG_KEYS
-#define LED_FLAG_KEYS (LED_FLAG_KEYLIGHT | LED_FLAG_MODIFIER)
+  #define LED_FLAG_KEYS (LED_FLAG_KEYLIGHT | LED_FLAG_MODIFIER)
 #endif
 
 static bool outrun_sunset(effect_params_t* params) {
@@ -70,19 +87,13 @@ static bool outrun_sunset(effect_params_t* params) {
     rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
   }
 
-  return led_max < DRIVER_LED_TOTAL;
+  return rgb_matrix_check_finished_leds(led_max);
 }
 
 // First-person shooter mode. Lights up WASD keys
 static bool game_fps(effect_params_t* params) {
   RGB_MATRIX_USE_LIMITS(led_min, led_max);
-
-  HSV bg_hsv = rgb_matrix_config.hsv;
-
-  HSV wasd_hsv = rgb_matrix_config.hsv;
-  wasd_hsv.h += rgb_matrix_config.speed;
-  RGB wasd_rgb = hsv_to_rgb(wasd_hsv);
-
+  
   // Blank out the colors on initialization.
   if (params->init) {
     rgb_matrix_set_color_all(0, 0, 0);
@@ -91,60 +102,28 @@ static bool game_fps(effect_params_t* params) {
   for (uint8_t i = led_min; i < led_max; i++) {
     RGB_MATRIX_TEST_LED_FLAGS();
 
-    // Dim background by 50% to make WASD keys stand out more
-    if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_KEYS)) {
-      bg_hsv.v = rgb_matrix_config.hsv.v / 2;
-    } else {
-      bg_hsv.v = rgb_matrix_config.hsv.v;
-    }
+    HSV hsv = rgb_matrix_config.hsv;
 
-    RGB bg_rgb = hsv_to_rgb(bg_hsv);
-    rgb_matrix_set_color(i, bg_rgb.r, bg_rgb.g, bg_rgb.b);
-
-    // Indices: 17, 31, 32, 33 = W, A, S, D on Drop ALT
-    // See: config_led.c
     if (i == 17 || (i >= 31 && i < 34)) {
-      rgb_matrix_set_color(i, wasd_rgb.r, wasd_rgb.g, wasd_rgb.b);
-    }
-  }
-
-  return led_max < DRIVER_LED_TOTAL;
-}
-
-// MOBA mode (LoL, HotS). Lights up QWERDF keys.
-static bool game_moba(effect_params_t* params) {
-  RGB_MATRIX_USE_LIMITS(led_min, led_max);
-
-  HSV bg_hsv = rgb_matrix_config.hsv;
-  HSV ability_hsv = rgb_matrix_config.hsv;
-  ability_hsv.h += rgb_matrix_config.speed;
-  RGB ability_rgb = hsv_to_rgb(ability_hsv);
-
-  // Blank out the colors on initialization.
-  if (params->init) {
-    rgb_matrix_set_color_all(0, 0, 0);
-  }
-
-  for (uint8_t i = led_min; i < led_max; i++) {
-    RGB_MATRIX_TEST_LED_FLAGS();
-
-    // Dim background by 50% to make the action keys stand out more
-    if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_KEYS)) {
-      bg_hsv.v = rgb_matrix_config.hsv.v / 2;
+      hsv.h = 34;
+      hsv.s = 0.98f * hsv.s; //166;
+      hsv.v = 1.0f * hsv.v;
+    } else if ( i >= 34 && i < 37) {
+      hsv.h = 13;
+      hsv.s = 0.9f * hsv.s; //145;
+      hsv.v = 0.98f * hsv.v; //245;
     } else {
-      bg_hsv.v = rgb_matrix_config.hsv.v;
+      hsv.h = 187;
+      hsv.s = 0.67f * hsv.s; //130;
+      hsv.v = 0.27f * hsv.v; //69;
     }
-
-    RGB bg_rgb = hsv_to_rgb(bg_hsv);
-    rgb_matrix_set_color(i, bg_rgb.r, bg_rgb.g, bg_rgb.b);
-
-    // QWERDF keys
-    if ((i >= 16 && i < 20) || (i >= 33 && i < 35)) {
-      rgb_matrix_set_color(i, ability_rgb.r, ability_rgb.g, ability_rgb.b);
-    }
+    
+    RGB rgb;
+    rgb = hsv_to_rgb(hsv);
+    rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
   }
 
-  return led_max < DRIVER_LED_TOTAL;
+  return rgb_matrix_check_finished_leds(led_max);
 }
 
 #endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
