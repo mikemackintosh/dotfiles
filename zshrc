@@ -74,6 +74,15 @@ setopt hist_ignore_space
 setopt inc_append_history
 setopt share_history
 
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format "$fg[yellow]%B--- %d%b"
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+
 extra_sources=(
     $HOME/bin
     $HOME/.local/bin
@@ -120,7 +129,7 @@ source $ZNAP_PLUGIN_DIR/zsh-snap/znap.zsh  # Start Znap
 # znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-syntax-highlighting
 znap source marlonrichert/zsh-hist
-znap source zsh-users/zsh-autosuggestions
+# znap source zsh-users/zsh-autosuggestions
 
 #
 #
@@ -130,5 +139,5 @@ znap source zsh-users/zsh-autosuggestions
 reload() {
     clear 
     source ~/.zshrc
-    echo -e "Reloaded!"
+    echo -e "\033[38;5;208mReloaded!\033[0m"
 }
