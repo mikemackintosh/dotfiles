@@ -100,6 +100,7 @@ if [[ $ZSH -eq 1 ]]; then
   # Place zsh
   place zshrc
   place zsh
+  place zsh-plugins
 
   # Place curlrc
   place curlrc
@@ -119,17 +120,17 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-  apm install atom-ide-ui
-  apm install city-lights-icons
-  apm install go-debug
-  apm install go-plus
-  apm install go-signature-statusbar
-  apm install hclfmt
-  apm install hey-pane
-  apm install ide-go
-  apm install language-docker
-  apm install language-hcl
-  apm install suburb-lights-syntax
+  #apm install atom-ide-ui
+  #apm install city-lights-icons
+  #apm install go-debug
+  #apm install go-plus
+  #apm install go-signature-statusbar
+  #apm install hclfmt
+  #apm install hey-pane
+  #apm install ide-go
+  #apm install language-docker
+  #apm install language-hcl
+  #apm install suburb-lights-syntax
 
   brew install zplug
   source ~/.zsh/zplug/init.zsh
@@ -137,6 +138,7 @@ if [[ $OSTYPE == darwin* ]]; then
   brew install the_silver_searcher
   brew install jq
   brew install go
+  brew install exa
 fi
 
 go install github.com/mikemackintosh/chrono@latest

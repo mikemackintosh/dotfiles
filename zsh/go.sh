@@ -5,13 +5,19 @@ fi
 
 # MOST AWESOMEST THING EVER
 goto() {
-  echo -n "Switching to ${1}..."
-  TARGETS=($(find $GOPATH/src -name $1 -type d -maxdepth 3))
-  TARGET_COUNT=$((${#TARGETS[@]} - 1))
+  DESTINATION=$1
+  if [ ${#DESTINATION} -eq 0 ]; then
+  echo "$DESTINATION"
+    return
+  fi
+
+  TARGETS=($(find $GOPATH/src -name $DESTINATION -type d -maxdepth 3))
+  TARGET_COUNT=${#TARGETS[@]}
   if [ $TARGET_COUNT -eq 0 ]; then
-    echo " Sorry! No matching dirs"
+    echo $fg[orange] "Sorry! No matching dirs"
     return
   elif [ $TARGET_COUNT -eq 1 ]; then
+    echo -n "Switching to ${DESTINATION}..."
     cd "${TARGETS}"
   else
     echo -e "\nWe found more than one location matching you input.\n"
@@ -104,3 +110,4 @@ goget(){
     cd $REPO
     git clone $DIR
 }
+

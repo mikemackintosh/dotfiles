@@ -36,6 +36,7 @@ color=(
 # 19 font-ninth
 
 # Text color codes:
+  13 purple
   30 black                  40 bg-black
   31 red                    41 bg-red
   32 green                  42 bg-green
@@ -57,12 +58,12 @@ color=(
 # 56 through 59 reserved
 
 # Ideogram markings:
-# 60 underline-or-right
-# 61 double-underline-or-right
-# 62 overline-or-left
-# 63 double-overline-or-left
-# 64 stress
-# 65 no-ideogram-marking
+60 underline-or-right
+61 double-underline-or-right
+62 overline-or-left
+63 double-overline-or-left
+64 stress
+65 no-ideogram-marking
 )
 
 # A word about black and white:  The "normal" shade of white is really a

@@ -295,3 +295,7 @@ function git_repo_name() {
     echo ${repo_path:t}
   fi
 }
+
+function git_effect() {
+  git log --name-status HEAD^..HEAD
+}
