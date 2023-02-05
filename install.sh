@@ -2,12 +2,12 @@
 
 # Inlcude the helper script - Helper function for outputting information
 # A log will offset the start to match success and errors
-log() {
+function log() {
   echo -e "${@}"
 }
 
 # A generic log message
-info() {
+function info() {
   echo -e "\033[0m -> ${@}"
 }
 

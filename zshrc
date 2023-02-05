@@ -74,6 +74,10 @@ setopt hist_ignore_space
 setopt inc_append_history
 setopt share_history
 
+#
+# Zstyle
+#
+# Configurations for completions and more!
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' verbose yes
