@@ -2,6 +2,22 @@ ZNAP_PLUGIN_DIR=$HOME/.zsh-plugins
 DOT_ZSH_PLUGIN_DIR=$HOME/.dotfiles/zsh
 GOPATH=$HOME/go
 
+# Set default lang
+export LANGUAGE="en_US.UTF-8"
+export LC_ALL=en_US.UTF-8
+
+# Set the editor, default to VIM
+# Upgrade to VS Code if it's installed
+export EDITOR=vim
+command -v code &>/dev/null
+if [[ $? -eq 0 ]]; then
+  export EDITOR=code
+fi
+
+# Gray color for autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239'
+
+
 #
 # Deps and Environment
 #
@@ -104,6 +120,7 @@ source $ZNAP_PLUGIN_DIR/zsh-snap/znap.zsh  # Start Znap
 # znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-syntax-highlighting
 znap source marlonrichert/zsh-hist
+znap source zsh-users/zsh-autosuggestions
 
 #
 #
