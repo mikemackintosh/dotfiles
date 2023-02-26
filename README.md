@@ -1,5 +1,12 @@
-dotfiles
-========
+```
+    ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
+    ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
+    ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗
+    ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║
+    ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║
+    ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
+```
+# <div align="center">mikentosh's dotfiles</div>
 
 ### Overview
 These dotfiles have been a work in progress for the past few years. The include everything from setup scripts to my vim config and Bash helpers. I am still a Bash fanboy, and have quite a bit of experience with it by this point. I use these across linux and macOS and when possible I always add in support for OS detection.
