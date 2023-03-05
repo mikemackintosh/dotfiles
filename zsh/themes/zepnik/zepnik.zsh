@@ -53,4 +53,4 @@ precmd() {
 }
 precmd_functions+=(precmd)
 
-PROMPT="%F{blue}%1~%f %B%F{green}%#%f%b "
+PROMPT="%F{205}%D{%L:%M:%S}%f %F{97}%1~%f %B%F{215}%#%f%b "

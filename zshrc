@@ -126,14 +126,14 @@ done
         https://github.com/marlonrichert/zsh-snap.git $ZNAP_PLUGIN_DIR/zsh-snap
 source $ZNAP_PLUGIN_DIR/zsh-snap/znap.zsh  # Start Znap
 
-#
-# Plugins
-#
-# The following plugins will be downloaded/enabled
-# znap source marlonrichert/zsh-autocomplete
-znap source zsh-users/zsh-syntax-highlighting
+# #
+# # Plugins
+# #
+# # The following plugins will be downloaded/enabled
+# # znap source marlonrichert/zsh-autocomplete
+# znap source zsh-users/zsh-syntax-highlighting
 znap source marlonrichert/zsh-hist
-# znap source zsh-users/zsh-autosuggestions
+# # znap source zsh-users/zsh-autosuggestions
 
 #
 #
