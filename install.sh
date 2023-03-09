@@ -58,8 +58,6 @@ place() {
 
   echo ""
 }
-# Install git submodules
-git submodule update --init --recursive
 
 # Install dotfiles
 if [ ! -d $HOME/.dotfiles ]; then
