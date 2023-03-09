@@ -58,10 +58,6 @@ place() {
 
   echo ""
 }
-
-# Install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
 # Install git submodules
 git submodule update --init --recursive
 
@@ -120,6 +116,10 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
+
+  # Install homebrew
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
   #apm install atom-ide-ui
   #apm install city-lights-icons
   #apm install go-debug
