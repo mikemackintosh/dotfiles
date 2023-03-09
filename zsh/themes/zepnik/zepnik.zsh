@@ -1,3 +1,6 @@
+NEWLINE=$'\n'
+precmd_functions=()
+
 # Set basic helper for resetting color
 export rc="%f"
 
@@ -53,4 +56,10 @@ precmd() {
 }
 precmd_functions+=(precmd)
 
-PROMPT="%F{205}%D{%L:%M:%S}%f %F{97}%1~%f %B%F{215}%#%f%b "
+if [[ ! -z $SSH_CLIENT ]]; then
+   export SSH_PROMPT="%B%F{48}%n%f%b %F{51}on%f %F{blue}${${(%):-%m}}%f${NEWLINE}%F{97}⮑%f  "
+else 
+  export SSH_PROMPT=""
+fi
+
+PROMPT="${SSH_PROMPT}%F{147}%2~%f %B%F{215}❯%f%b "
