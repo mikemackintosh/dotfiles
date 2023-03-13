@@ -102,9 +102,11 @@
   insteadOf = github:
   insteadOf = http://github.com/
   insteadOf = https://github.com/
+
 [user]
 	name = Mike Mackintosh
 	email = m@zyp.io
+
 [maintenance]
 	repo = /Users/duppster/.dotfiles/zsh-plugins/zsh-autocomplete
 	repo = /Users/duppster/.dotfiles/zsh-plugins/zsh-snap
