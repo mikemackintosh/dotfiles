@@ -17,6 +17,14 @@ Once cloned, install with:
 
 It will back up existing configuration files and create symlinks to the `.dotfiles/` directory.
 
+## Vim
+
+Update the `vimrc` file. It relies on `vim-plugged`.
+
+To install plugins, run:
+
+    :PlugInstall
+
 ## Private Parts
 I introduced a `.private/` directory a few years back during the DevOps boom. It had one purpose which was to allow me to keep privileged material available to my Bash environment, but also prevent it from being checked in to Git. This directory is ignored by `.gitignore` but the user-specific configurations are exported to Bash.
 
