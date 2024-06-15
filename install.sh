@@ -102,6 +102,7 @@ if [[ $ZSH -eq 1 ]]; then
 
   # Place curlrc
   place curlrc
+  place psqlrc
 
   # Place git
   place git/gitconfig gitconfig
@@ -122,25 +123,14 @@ if [[ $OSTYPE == darwin* ]]; then
   # Install homebrew
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-  #apm install atom-ide-ui
-  #apm install city-lights-icons
-  #apm install go-debug
-  #apm install go-plus
-  #apm install go-signature-statusbar
-  #apm install hclfmt
-  #apm install hey-pane
-  #apm install ide-go
-  #apm install language-docker
-  #apm install language-hcl
-  #apm install suburb-lights-syntax
-
   brew install zplug
   source ~/.zsh/zplug/init.zsh
   brew install git-delta
   brew install the_silver_searcher
   brew install jq
   brew install go
-  brew install exa
+  brew install eza
+  brew install terraform
 
   wget https://github.com/mikemackintosh/chrono/releases/download/v1.0.6/chrono-darwin-amd64
   chmod +x ./chrono-darwin-amd64
@@ -150,7 +140,6 @@ if [[ $OSTYPE == darwin* ]]; then
   chmod +x ./ninetails-darwin-amd64
   mv ./ninetails-darwin-amd64 $HOME/.bin/ninetails
 fi
-
 
 # Source the bash_profile we just installed
 source ~/.zshrc
