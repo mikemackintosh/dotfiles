@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "white": "#FFFFFF",
+    "purple": "#c386f1",
+    "pink": "#ff61d5",
+    "tan": "#CC3802",
+    "teal": "#047E84",
+    "blue": "#06969a",
+    "turqoise": "#00f7ff",
+    "plum": "#b752ac",
+    "blush": "#DA627D",
+    "salmon": "#FCA17D",
+    "sunrise": "#faaf5e",
+    "sky": "#86BBD8",
+    "teal_blue": "#33658A",
+    "flip_bg": "#222222",
+    "flip_fg": "#FFFFFF",
+    "flip_shadow": "#111111",
+    "flip_hour": "#FF9500",
+    "green": "#63ff9f",
+    "flip_minute": "#00B9FF",
+    "flip_second": "#00FF7F"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+            "type": "executiontime",
+            "style": "diamond",
+            "powerline_symbol": "",
+            "foreground": "p:sunrise",
+            "template": "\udb80\udd09 {{ .FormattedMs }} ",
+            "properties": {
+                "threshold": 500,
+                "style": "austin",
+                "always_enabled": true
+            }
+        }
+      ],
+      "type": "rprompt"
+    },
+    {
+      "alignment": "left",
+      "segments": [
+        {
+            "background": "p:turqoise",
+            "foreground": "p:teal",
+            "properties": {
+                "time_format": "3:04pm"
+            },
+            "style": "diamond",
+            "template": " \uf135 <b>{{ .CurrentDate | date .Format }}</b> ",
+            "type": "time"
+        },
+        {
+            "type": "session",
+            "style": "powerline",
+            "foreground": "p:teal",
+            "background": "p:turqoise",
+            "trailing_diamond": "",
+            "template": "{{ if .SSHSession }} {{ end }} "
+        },
+        {
+            "background": "p:blush",
+            "foreground": "p:white",
+            "powerline_symbol": "\ue0b0",
+            "properties": {
+                "style": "agnoster_short",
+                "max_width": 3,
+                "hide_root_location": true,
+                "folder_icon": "",
+                "max_depth": 2
+            },
+            "style": "powerline",
+            "template": " {{ .Path }} ",
+            "type": "path"
+        },
+        {
+            "background": "p:salmon",
+            "foreground": "p:white",
+            "powerline_symbol": "\ue0b0",
+            "properties": {
+            "branch_icon": "",
+            "fetch_stash_count": true,
+            "fetch_status": false,
+            "fetch_upstream_icon": false
+            },
+            "style": "accordion",
+            "template": " {{ .UpstreamIcon }}\u279c {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} ",
+            "type": "git"
+        },
+        {
+            "background": "p:sky",
+            "foreground": "p:white",
+            "powerline_symbol": "\ue0b0",
+            "style": "accordion",
+            "type": "text"
+        },
+        {
+            "background": "p:blue",
+            "foreground": "p:white",
+            "powerline_symbol": "\ue0b0",
+            "style": "accordion",
+            "type": "text"
+        },
+        {
+            "background": "p:teal_blue",
+            "foreground": "p:white",
+            "trailing_diamond": "\ue0b0",
+            "style": "diamond",
+            "template": " \u2665 ",
+            "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 3
+}
