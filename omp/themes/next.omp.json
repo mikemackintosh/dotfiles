@@ -1,6 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
+    "black": "#000000",
     "white": "#FFFFFF",
     "purple": "#c386f1",
     "pink": "#ff61d5",
@@ -9,8 +10,14 @@
     "blue": "#06969a",
     "turqoise": "#00f7ff",
     "plum": "#b752ac",
+    "punk": "#fbff00",
+    "punk_dark": "#54611a",
     "blush": "#DA627D",
     "salmon": "#FCA17D",
+    "salmonv2": "#c77dfc",
+    "salmonv2_dark": "#5e2587",
+    "fade": "#c77dfc",
+    "fade_dark": "#7d3bac",
     "sunrise": "#faaf5e",
     "sky": "#86BBD8",
     "teal_blue": "#33658A",
@@ -51,45 +58,92 @@
                 "time_format": "3:04pm"
             },
             "style": "diamond",
+            "trailing_diamond": "\ue0b0",
             "template": " \uf135 <b>{{ .CurrentDate | date .Format }}</b> ",
             "type": "time"
         },
         {
-            "type": "session",
-            "style": "powerline",
             "foreground": "p:teal",
             "background": "p:turqoise",
-            "trailing_diamond": "",
-            "template": "{{ if .SSHSession }} {{ end }} "
-        },
-        {
-            "background": "p:blush",
-            "foreground": "p:white",
-            "powerline_symbol": "\ue0b0",
-            "properties": {
-                "style": "agnoster_short",
-                "max_width": 3,
-                "hide_root_location": true,
-                "folder_icon": "",
-                "max_depth": 2
-            },
             "style": "powerline",
-            "template": " {{ .Path }} ",
-            "type": "path"
-        },
-        {
-            "background": "p:salmon",
-            "foreground": "p:white",
+            "trailing_diamond": "\ue0b0",
             "powerline_symbol": "\ue0b0",
-            "properties": {
+
+            "template": "{{ if .SSHSession }} {{ end }} ",
+            "type": "session"
+        },
+
+        {
+          "background": "p:white",
+          "foreground": "p:black",
+          "powerline_symbol": "\ue0b0",
+
+          "style": "powerline",
+
+
+          "properties": {
             "branch_icon": "",
             "fetch_stash_count": true,
             "fetch_status": false,
             "fetch_upstream_icon": false
+          },
+          "template": " {{ .UpstreamIcon }}\u279c [{{ .HEAD }}] {{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}",
+          "type": "git"
+      },
+      {
+          "background": "transparent",
+          "foreground": "p:punk",
+          "leading_powerline": "<transparent,background>\ue0b0</>",
+
+          "powerline_symbol": "\ue0b0",
+          "style": "accordion",
+          "type": "path"
+      },
+
+        {
+            "background": "p:punk",
+            "foreground": "p:punk_dark",
+            "properties": {
+              "folder_icon": "\uf115",
+              "folder_separator_icon": " \ue0b1 ",
+              "home_icon": "\ueb06",
+              "style": "agnoster"
             },
-            "style": "accordion",
-            "template": " {{ .UpstreamIcon }}\u279c {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} ",
+            "template": " {{ .Path }} ",
+            "type": "path"
+        },
+        {
+          "background": "transparent",
+          "foreground": "p:punk",
+          "style": "plain",
+          "template": "\ue0b0",
+          "type": "text"
+      },
+        {
+            "background": "p:white",
+            "foreground": "p:black",
+            "powerline_symbol": "\ue0b0",
+
+            "style": "powerline",
+
+
+            "properties": {
+              "branch_icon": "",
+              "fetch_stash_count": true,
+              "fetch_status": false,
+              "fetch_upstream_icon": false
+            },
+            "template": " {{ .UpstreamIcon }}\u279c [{{ .HEAD }}] {{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}",
             "type": "git"
+        },
+        {
+            "background": "p:salmon",
+            "foreground": "p:white",
+            "leading_powerline": "<transparent,background>\ue0b0</>",
+
+            "powerline_symbol": "\ue0b0",
+            "style": "accordion",
+            "type": "text"
         },
         {
             "background": "p:sky",

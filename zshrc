@@ -91,4 +91,4 @@ for f in $dot_plugins; do
     source ${DOT_ZSH_PLUGIN_DIR}/${f}.zsh
 done
 
-eval "$(/opt/homebrew/bin/oh-my-posh init zsh --config ${HOME}/.dotfiles/omp/themes/next.omp.json)"
+eval "$(/opt/homebrew/bin/oh-my-posh init zsh --config ${HOME}/.dotfiles/omp/themes/splugscape.omp.json)"

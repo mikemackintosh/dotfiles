@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#000000",
+          "background": "#F7768E",
+          "properties": {
+            "prefix": " ",
+            "postfix": " "
+          }
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#000000",
+          "background": "#9ECE6A",
+          "properties": {
+            "prefix": " \uF07B ",
+            "style": "folder",
+            "folder_separator_icon": " \uE0B1 "
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#000000",
+          "background": "#E0AF68",
+          "properties": {
+            "prefix": " \uE725 ",
+            "postfix": " ",
+            "display_status": true,
+            "display_stash_count": true,
+            "display_upstream_icon": true
+          }
+        },
+        {
+          "type": "node",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#000000",
+          "background": "#7AA2F7",
+          "properties": {
+            "prefix": " \uE718 "
+          }
+        },
+        {
+          "type": "go",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#000000",
+          "background": "#7DCFFF",
+          "properties": {
+            "prefix": " \uE626 "
+          }
+        },
+        {
+          "type": "time",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#ffffff",
+          "background": "#BB9AF7",
+          "properties": {
+            "prefix": " \uF64F ",
+            "time_format": "15:04:05"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "exit",
+          "style": "plain",
+          "foreground": "#C0CAF5",
+          "properties": {
+            "prefix": "\u276F ",
+            "display_exit_code": false,
+            "always_enabled": true,
+            "error_color": "#F7768E"
+          }
+        }
+      ]
+    }
+  ]
+}

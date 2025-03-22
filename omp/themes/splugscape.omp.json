@@ -1,0 +1,94 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "palette": {
+        "background": "#1a1b26",
+        "foreground": "#a9b1d6",
+        "black": "#292E42",
+        "dark": "#16161E",
+        "bright_black": "#565f89",
+        "red": "#f6758d",
+        "green": "#9ece6a",
+        "teal": "#1abc9c",
+        "orange": "#f69962",
+        "blue": "#7dcfff",
+        "purple": "#9d7cd8",
+        "cyan": "#2ac3de",
+        "white": "#bfc8f4"
+    },
+    "blocks": [
+      {
+        "alignment": "left",
+        "segments": [
+            {
+                "background": "p:dark",
+                "foreground": "p:purple",
+                "leading_diamond": "\ue0ba",
+                "properties": {
+                    "threshold": 500,
+                    "style": "austin",
+                    "always_enabled": true
+                },
+                "style": "diamond",
+                "template": " <#f69962>\udb80\udd09</> {{ .Ms }}<d><i>ms</i></d> ",
+                "type": "executiontime"
+            }
+        ],
+        "type": "rprompt"
+      },
+      {
+        "alignment": "left",
+        "segments": [
+          {
+              "background": "p:dark",
+              "foreground": "p:teal",
+              "properties": {
+                  "time_format": "3:04pm"
+              },
+              "style": "diamond",
+              "trailing_diamond": "\uE0BC",
+              "template": " <d>\uf135</d> <b>{{ .CurrentDate | date .Format }}</b> ",
+              "type": "time"
+          },
+          {
+            "background": "p:dark",
+            "foreground": "p:cyan",
+            "leading_diamond": "\ue0ba",
+            "trailing_diamond": "\uE0BC",
+            "properties": {
+                "folder_separator_icon": " <d><#565f89>\ue0b1</></d> ",
+                "home_icon": "",
+                "style": "agnoster_short"
+            },
+            "style": "diamond",
+            "template": " <#9d7cd8>\ueb06</> {{ .Path }} ",
+            "type": "path"
+         },
+         {
+            "background": "p:orange",
+            "leading_diamond": "\ue0ba",
+            "style": "diamond",
+            "template": "<p:dark>\uF408</>",
+            "type": "git"
+        },
+            {
+                "background": "p:black",
+                "foreground": "#1ABC9C",
+                "leading_diamond": "\ue0ba",
+                "trailing_diamond": "\uE0BC",
+                "properties": {
+                    "branch_icon": "",
+                    "fetch_stash_count": false,
+                    "fetch_status": false,
+                    "fetch_upstream_icon": false
+                },
+                "style": "diamond",
+                "template": " [<i><#7AA2F7>{{ .HEAD }}</></i>] {{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  d{{ .Staging.String }}{{ end }}",
+                "type": "git"
+            }
+        ],
+        "type": "prompt"
+      }
+    ],
+    "final_space": true,
+    "version": 3
+  }
