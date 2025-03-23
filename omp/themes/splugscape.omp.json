@@ -39,6 +39,21 @@
         "alignment": "left",
         "segments": [
             {
+                "properties": {
+                  "cache_duration": "none",
+                  "linux": "\uf17c",
+                  "macos": "\uf179",
+                  "windows": "\ue70f"
+                },
+                "leading_diamond": "\ue0b6",
+                "trailing_diamond": "\uE0BC",
+                "template": " {{ .Icon }} ",
+                "foreground": "#0C0A3E",
+                "background": "#2AC3DE",
+                "type": "os",
+                "style": "diamond"
+              },
+            {
                 "background": "p:dark",
                 "foreground": "p:teal",
                 "properties": {
@@ -54,7 +69,7 @@
                 "leading_diamond": "\ue0ba",
                 "style": "diamond",
                 "template": "<p:dark>\ueb06</>",
-                "type": "git"
+                "type": "text"
             },
             {
                 "background": "p:dark",
@@ -71,14 +86,14 @@
                 "type": "path"
             },
             {
-                "background": "p:purple",
+                "background": "#E0AF68",
                 "leading_diamond": "\ue0ba",
                 "style": "diamond",
                 "template": "<p:dark>\uF408</>",
                 "type": "git"
             },
             {
-                "background": "p:black",
+                "background": "p:dark",
                 "foreground": "#1ABC9C",
                 "leading_diamond": "\ue0ba",
                 "trailing_diamond": "\uE0BC",

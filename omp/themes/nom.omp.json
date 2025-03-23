@@ -1,0 +1,149 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "linux": "\uf17c",
+            "macos": "\uf179",
+            "windows": "\ue70f"
+          },
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ .Icon }} ",
+          "foreground": "#0C0A3E",
+          "background": "#F3C677",
+          "type": "os",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_host": false
+          },
+          "template": " \uf2c0 <b>{{ .UserName }}</b> ",
+          "foreground": "#F3C677",
+          "powerline_symbol": "\ue0b0",
+          "background": "#0C0A3E",
+          "type": "session",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "folder_icon": "\uf115",
+            "folder_separator_icon": " \ue0b1 ",
+            "home_icon": "\uf7db",
+            "style": "folder"
+          },
+          "template": " \uf07c <b>{{ .Path }}</b> ",
+          "foreground": "#e0c0e0",
+          "powerline_symbol": "\ue0b0",
+          "background": "#7B1E7A",
+          "type": "path",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "branch_ahead_icon": "\uf0dd ",
+            "branch_behind_icon": "\uf0de ",
+            "branch_icon": "\ue725 ",
+            "branch_identical_icon": "\uf0c9 ",
+            "cache_duration": "none",
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "template": " \ue725 <b>{{ .HEAD }}</b>{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 <b>{{ .Working.String }}</b>{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 <b>{{ .Staging.String }}</b>{{ end }} ",
+          "foreground": "#F3C677",
+          "powerline_symbol": "\ue0b0",
+          "background": "#B33F62",
+          "type": "git",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "fetch_version": true
+          },
+          "template": " \ue626 <b>{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}</b> ",
+          "foreground": "#0C0A3E",
+          "powerline_symbol": "\ue0b0",
+          "background": "#F9564F",
+          "type": "golang",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "fetch_version": true,
+            "npm_icon": "\ue71e ",
+            "pnpm_icon": "\uf8d3 ",
+            "yarn_icon": "\uf61a "
+          },
+          "template": " \ue718 <b>{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}</b> ",
+          "foreground": "#0C0A3E",
+          "powerline_symbol": "\ue0b0",
+          "background": "#F3C677",
+          "type": "node",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "always_enabled": true,
+            "cache_duration": "none",
+            "style": "austin",
+            "threshold": 500
+          },
+          "leading_diamond": "<transparent>\ue0b0</transparent>\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": " \uf252 <b>{{ .FormattedMs }}</b> ",
+          "foreground": "#F3C677",
+          "background": "#0C0A3E",
+          "type": "executiontime",
+          "style": "diamond"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": " \uf43a {{ .CurrentDate | date \"15:04:05\" }} ",
+          "foreground": "#0C0A3E",
+          "background": "#F3C677",
+          "type": "time",
+          "style": "diamond"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \uf054 <b>$</b> ",
+          "foreground": "#F9564F",
+          "type": "text",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
