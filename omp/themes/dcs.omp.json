@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palettes": {
-    "template": "{{ if eq .Env.DCSMODE \"night\" }}night{{ else }}storm{{ end }}",
+    "template": "{{ if eq .Env.DCSMODE \"storm\" }}storm{{ else }}night{{ end }}",
     "list": {
       "night": {
         "bg": "#24283b",
