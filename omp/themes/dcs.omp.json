@@ -141,7 +141,7 @@
         },
         {
           "foreground": "p:bg_dark",
-          "background": "p:cyan",
+          "background": "p:purple",
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
           "template": "{{ if .SSHSession }} \uf0c1 {{ end }}",
@@ -154,7 +154,7 @@
           "style": "powerline",
           "properties": {
             "folder_icon": "\uf07c",
-            "folder_separator_icon": " <d>></d> ",
+            "folder_separator_icon": "<o> ╚ <d>\uf07c</d> </o>",
             "home_icon": "\uf015",
             "max_depth": 3,
             "cycle_folder_separator": true,
@@ -164,12 +164,12 @@
               "p:blue",
               "p:purple"
             ],
-            "folder_format": "<d>%s</d>",
+            "folder_format": "<o><d>%s</d></o>",
             "left_format": "<b>%s</b>",
             "right_format": "<b>%s</b>",
             "style": "agnoster_short"
           },
-          "template": " {{ .Path }} ",
+          "template": "<o> {{ .Path }} </o>",
           "type": "path"
         },
         {
