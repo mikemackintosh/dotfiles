@@ -54,6 +54,18 @@ setopt hist_ignore_space
 setopt inc_append_history
 setopt share_history
 
+# Auto-load completion and tab menu
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
+
+# Move cursor to bottom of screen
+printf '\n%.0s' {1..$LINES}
+# Set cursor to I-beam
+printf '\033[5 q\r'
+
+alias clear="clear && printf '\n%.0s' {1..$LINES} && printf '\033[5 q\r'"
+
 #
 # source ~/.zshrc
 reload() {
@@ -73,6 +85,8 @@ extra_sources=(
 )
 export PATH="${(j.:.)extra_sources}:$STD_PATH"
 
+export GOPATH=$HOME/go
+
 dot_plugins=(
     "add_secret"
     "alias"
@@ -91,4 +105,4 @@ for f in $dot_plugins; do
     source ${DOT_ZSH_PLUGIN_DIR}/${f}.zsh
 done
 
-eval "$(/opt/homebrew/bin/oh-my-posh init zsh --config ${HOME}/.dotfiles/omp/themes/splugscape.omp.json)"
+eval "$(/opt/homebrew/bin/oh-my-posh init zsh --config ${HOME}/.dotfiles/omp/themes/dcs.omp.json)"

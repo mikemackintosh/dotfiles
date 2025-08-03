@@ -49,6 +49,7 @@
   d = diff --patience
   br = branch
   ci = commit -a
+  cm = commit -m
   co = checkout
   st = status
 
@@ -79,7 +80,7 @@
   file-style = omit
   hunk-header-decoration-style = blue box
   hunk-header-file-style = red
-  hunk-header-line-number-style = "#067a00"
+  hunk-header-line-number-style = "#578555ff"
   hunk-header-style = file line-number syntax
 
 [include]
@@ -87,8 +88,10 @@
 
 [IncludeIf "gitdir:/Users"]
   path = ~/.gitconfig-osx
+
 [IncludeIf "gitdir:/home"]
   path = ~/.gitconfig-linux
+
 [IncludeIf "gitdir:C:"]
   path = ~/.gitconfig-windows
 
@@ -98,6 +101,11 @@
   insteadOf = github:
   insteadOf = http://github.com/
   insteadOf = https://github.com/
+
+[url "https://github.com/homebrew/"]
+  insteadOf = homebrew:
+  insteadOf = brew:
+  insteadoOf = ssh://git@github.com:homebrew
 
 [user]
 	name = Mikentosh

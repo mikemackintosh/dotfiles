@@ -159,17 +159,14 @@ if [[ $OSTYPE == darwin* ]]; then
   brew install --cask font-ubuntu-mono-nerd-font
   brew install --cask font-hack-nerd-font
 
-  wget https://github.com/mikemackintosh/chrono/releases/download/v1.0.6/chrono-darwin-amd64
-  chmod +x ./chrono-darwin-amd64
-  mv ./chrono-darwin-amd64 $HOME/bin/chrono
+  # wget https://github.com/mikemackintosh/chrono/releases/download/v1.0.6/chrono-darwin-amd64
+  # chmod +x ./chrono-darwin-amd64
+  # mv ./chrono-darwin-amd64 $HOME/bin/chrono
 
   wget https://github.com/mikemackintosh/ninetails/releases/download/v1.0.4/ninetails-darwin-amd64
   chmod +x ./ninetails-darwin-amd64
   mv ./ninetails-darwin-amd64 $HOME/bin/ninetails
 fi
-
-curl -sS https://starship.rs/install.sh | sh
-
 
 # Source the bash_profile we just installed
 source ~/.zshrc
