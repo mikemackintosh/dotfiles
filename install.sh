@@ -101,7 +101,7 @@ if [[ $ZSH -eq 1 ]]; then
   # place zsh-plugins
 
   # Place curlrc
-  # place curlrc
+  place curlrc
   place psqlrc
 
   # Place git
@@ -110,9 +110,9 @@ if [[ $ZSH -eq 1 ]]; then
   # place git/gitconfig-osx gitconfig-osx
 
   # Place tmux.conf
-  # place tmux.conf
+  place tmux.conf
   place hushlogin
-  # place vimrc
+  place vimrc
 
 else
   log "Already installed. Skipping."
@@ -124,6 +124,8 @@ if [[ $OSTYPE == darwin* ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   brew install zsh
+  brew install zplug
+  source ~/.zsh/zplug/init.zsh
   brew install ruby
   brew install node
   brew install git-delta
