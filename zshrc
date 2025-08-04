@@ -62,7 +62,7 @@ zstyle ':completion:*' menu select
 # Move cursor to bottom of screen
 printf '\n%.0s' {1..$LINES}
 # Set cursor to I-beam
-printf '\033[5 q\r'
+# printf '\033[5 q\r'
 
 alias clear="clear && printf '\n%.0s' {1..$LINES} && printf '\033[5 q\r'"
 

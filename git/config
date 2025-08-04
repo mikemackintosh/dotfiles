@@ -106,7 +106,3 @@
   insteadOf = homebrew:
   insteadOf = brew:
   insteadoOf = ssh://git@github.com:homebrew
-
-[user]
-	name = Mikentosh
-	email = m@zyp.io

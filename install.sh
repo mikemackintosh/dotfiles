@@ -123,6 +123,9 @@ if [[ $OSTYPE == darwin* ]]; then
   # Install homebrew
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+  brew install zsh
+  brew install ruby
+  brew install node
   brew install git-delta
   brew install the_silver_searcher
   brew install jq
@@ -131,6 +134,7 @@ if [[ $OSTYPE == darwin* ]]; then
   brew install terraform
   brew install wget
   brew install gitleaks
+  brew install zsh-syntax-highlighting
 
   brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
@@ -158,14 +162,15 @@ if [[ $OSTYPE == darwin* ]]; then
   brew install --cask font-ubuntu-mono-derivative-powerline
   brew install --cask font-ubuntu-mono-nerd-font
   brew install --cask font-hack-nerd-font
+  brew install --cask font-code-new-roman-nerd-font
 
   # wget https://github.com/mikemackintosh/chrono/releases/download/v1.0.6/chrono-darwin-amd64
   # chmod +x ./chrono-darwin-amd64
   # mv ./chrono-darwin-amd64 $HOME/bin/chrono
 
-  wget https://github.com/mikemackintosh/ninetails/releases/download/v1.0.4/ninetails-darwin-amd64
-  chmod +x ./ninetails-darwin-amd64
-  mv ./ninetails-darwin-amd64 $HOME/bin/ninetails
+  # wget https://github.com/mikemackintosh/ninetails/releases/download/v1.0.4/ninetails-darwin-amd64
+  # chmod +x ./ninetails-darwin-amd64
+  # mv ./ninetails-darwin-arm64 $HOME/bin/ninetails
 fi
 
 # Source the bash_profile we just installed
