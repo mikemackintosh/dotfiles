@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palettes": {
-    "template": "{{ if eq .Env.DCSMODE \"storm\" }}storm{{ else }}night{{ end }}",
+    "template": "{{ if eq .Env.DCSMODE \"storm\" }}storm{{else if eq .Env.DCSMODE \"day\" }}day{{else}}night{{ end }}",
     "list": {
       "night": {
         "bg": "#24283b",
@@ -31,10 +31,39 @@
         "git_change": "#6183bb",
         "git_delete": "#914c54"
       },
+      "day": {
+        "bg": "#e8e8e8",
+        "bg_dark": "#a4a4ad",
+        "bg_darkdark": "#c3c3c3",
+        "bg_highlight": "#292e42",
+        "fg": "#c0caf5",
+        "fg_dark": "p:cteal",
+        "comment": "#565f89",
+        "blue": "#7aa2f7",
+        "blue0": "#24469b",
+        "blue1": "#2ac3de",
+        "blue2": "#0db9d7",
+        "cyan": "#7dcfff",
+        "green": "#9ece6a",
+        "green1": "#73daca",
+        "green2": "#41a6b5",
+        "magenta": "#dd0155",
+        "orange": "#fb8946",
+        "purple": "#9d7cd8",
+        "red": "#f7768e",
+        "red1": "#db4b4b",
+        "teal": "p:bg_darkdark",
+        "cteal": "#1abc9c",
+        "yellow": "#e0af68",
+        "terminal_black": "#414868",
+        "git_add": "#449dab",
+        "git_change": "#6183bb",
+        "git_delete": "#914c54"
+      },
       "storm": {
         "bg": "#24283b",
-        "bg_dark": "#3e3e3d",
-        "bg_darkdark": "#3e3e3d",
+        "bg_dark": "#292e42",
+        "bg_darkdark": "#1a1b26",
         "bg_highlight": "#292e42",
         "fg": "#c0caf5",
         "fg_dark": "#2c3148",
@@ -72,8 +101,9 @@
           "alias": "timestamp",
           "background": "p:bg_dark",
           "foreground": "p:teal",
+          "leading_diamond": "\n \ue0ba█",
           "trailing_diamond": "\ue0b8",
-          "template": "\n<#9ece6a> \uf017</> {{ .CurrentDate | date \"<b>03</b>:04:05 <d>PM</d>\" }} ",
+          "template": "{{ .CurrentDate | date \"<b>03</b>:04:05 <d>PM</d>\" }} ",
           "properties": {
             "time_format": "15:04:05"
           }
@@ -153,23 +183,24 @@
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
           "properties": {
-            "folder_icon": "\uf07c",
-            "folder_separator_icon": "<o> ╚ <d>\uf07c</d> </o>",
+            "folder_icon": "..",
+            "folder_separator_icon": " / <d>\uf07c</d> ",
             "home_icon": "\uf015",
             "max_depth": 3,
             "cycle_folder_separator": true,
             "cycle": [
               "p:yellow",
               "p:green",
-              "p:blue",
+              "p:blue2",
+              "p:blue1",
               "p:purple"
             ],
-            "folder_format": "<o><d>%s</d></o>",
-            "left_format": "<b>%s</b>",
+            "folder_format": "<d>%s</d>",
+            "left_format": "<b>%s</b> ",
             "right_format": "<b>%s</b>",
             "style": "agnoster_short"
           },
-          "template": "<o> {{ .Path }} </o>",
+          "template": " {{ .Path }} ",
           "type": "path"
         },
         {
