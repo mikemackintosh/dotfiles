@@ -238,9 +238,9 @@
     }
   ],
   "transient_prompt": {
-    "foreground": "p:yellow",
+    "foreground": "p:comment",
     "style": "plain",
-    "template": "<d>{{index .Segments.timestamp.Segment \"Text\" | }}\n\u276f</d> ",
+    "template": "\n<d>{{index .Segments.timestamp.Segment \"Text\" | }}\n\u276f</d> ",
     "type": "text"
   },
   "console_title_template": "{{ .Folder }}",
